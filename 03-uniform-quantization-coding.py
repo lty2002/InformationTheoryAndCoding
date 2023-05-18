@@ -26,15 +26,17 @@ def uniform_quantization(signal, level_num):
     return quantized, coding
 
 
-def figure(quantized_signal, delta_reciprocal, coding):
+def figure(origin_signal, quantized_signal, delta_reciprocal, coding):
     plt.figure(figsize=(9, 6))
-    plt.plot(origin_signal, 'b.-', quantized_signal, 'r.-')
+    plt.plot(origin_signal, '.-')
+    plt.plot(quantized_signal, '.-')
     plt.title('Quantized Signal (Uniform Quantization)')
     plt.legend(['origin_signal', 'quantized_signal'])
     plt.xticks(range(len(origin_signal))[::len(quantized_signal) // 10])
     plt.yticks(np.linspace(-np.max(quantized_signal), np.max(quantized_signal), delta_reciprocal * 2 - 1)[5:],
                labels=coding[5:])
     plt.grid()
+    plt.savefig('03.svg', dpi=300, format='svg')
     plt.show()
 
 
@@ -46,4 +48,4 @@ if __name__ == '__main__':
     delta_reciprocal = 8
     quantized_signal, coding = uniform_quantization(origin_signal, delta_reciprocal)
 
-    figure(quantized_signal, delta_reciprocal, coding)
+    figure(origin_signal, quantized_signal, delta_reciprocal, coding)
