@@ -78,7 +78,7 @@ int main() {
 
     printf("迭代次数为 = %d\n", k);//输出迭代次数
     printf("最佳信源分布为:\n");
-    for (int i = 0; i < 2; i++) {
+    for (int i = 0; i < 5; i++) {
         printf("%.3lf ", pa[i]); //输出信源的最佳分布，保留3位小数
     }
     printf("\n");
